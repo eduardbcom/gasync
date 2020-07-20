@@ -10,7 +10,7 @@ import (
 ctx := context.TODO()
 
 res, err := parallel.Do(
-    // both functions runs in parallel
+    // both functions run in parallel
     func() (interface{}, error) { return request(ctx, "task1") },
     func() (interface{}, error) { return request(ctx, "task2") },
 )
