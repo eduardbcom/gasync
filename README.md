@@ -3,9 +3,13 @@ Set of utilities to handle concurrency tasks in Go. Inspired by 'yarn add async'
 
 ## Parallel:
 ```go
+import (
+    "github.com/eduardbcom/gasync/parallel"
+)
+
 ctx := context.TODO()
 
-res, err := gasync.Parallel(
+res, err := parallel.Do(
     // both functions runs in parallel
     func() (interface{}, error) { return request(ctx, "task1") },
     func() (interface{}, error) { return request(ctx, "task2") },
