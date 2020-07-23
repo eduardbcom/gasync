@@ -18,7 +18,7 @@ if err != nil {
     return nil, err
 }
 
-res == ["task1", "task2"]
+res == []interface{}{"task1", "task2"}
 ```
 
 ## Motivation:
