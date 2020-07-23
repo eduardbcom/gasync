@@ -1,11 +1,10 @@
 package parallel
 
 import (
+	"context"
 	"errors"
 	"reflect"
 	"testing"
-
-	"golang.org/x/net/context"
 )
 
 func TestDoIdentityRequests(t *testing.T) {
