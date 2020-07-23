@@ -1,5 +1,5 @@
 # gasync
-![build](https://travis-ci.org/eduardbcom/gasync.svg?branch=master)
+[![Build Status](https://travis-ci.org/eduardbcom/gasync.svg?branch=master)](https://travis-ci.org/eduardbcom/gasync)
 
 Set of utilities to handle concurrency tasks in Go. Inspired by `yarn add async`.
 
