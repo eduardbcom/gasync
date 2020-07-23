@@ -13,6 +13,7 @@ func TestDoIdentityRequests(t *testing.T) {
 
 	ctx := context.TODO()
 	res, err := Do(
+		// TODO: test that functions were called only once
 		func() (interface{}, error) { return identifyOK(ctx, "task1") },
 		func() (interface{}, error) { return identifyOK(ctx, "task2") },
 	)
