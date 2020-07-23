@@ -26,7 +26,7 @@ fmt: ## Run go fmt on a project
 
 .PHONY: unit-test
 unit-test: ## Run unit  tests
-	@go test -cover ./... -v -count=1
+	@go test -covermode=count -coverprofile=coverage.out ./... -v -count=1
 
 .PHONY: check-gosetup
 check-gosetup:
