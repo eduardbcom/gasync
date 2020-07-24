@@ -4,7 +4,7 @@ import (
 	"sync"
 )
 
-// Parallel runs functions in parallel.
+// Do runs functions in parallel.
 //
 // If one of them returns an error, the final result is a (nil, Error).
 // The amount of function calls in that case is undefined.
@@ -15,10 +15,10 @@ func Do(funcs ...func() (interface{}, error)) ([]interface{}, error) {
 }
 
 // DoWithLimit runs maximum `limit` amount of functions in parallel.
-// 
+//
 // If one of them returns an error, the final result is a (nil, Error).
 // The amount of function calls in that case is undefined.
-// 
+//
 // Otherwise, it's an array of results.
 func DoWithLimit(limit int, funcs ...func() (interface{}, error)) ([]interface{}, error) {
 	if limit <= 0 {
@@ -61,7 +61,7 @@ func DoWithLimit(limit int, funcs ...func() (interface{}, error)) ([]interface{}
 
 	wg.Wait()
 
-	if len(errorCh) != 0{
+	if len(errorCh) != 0 {
 		return nil, <-errorCh
 	}
 
