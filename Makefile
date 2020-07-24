@@ -1,5 +1,3 @@
-BINARY = dunder-dbcall
-
 GO_BIN = $(GOPATH)/bin
 GO_PKG = $(GOPATH)/pkg
 GO_SRC = $(GOPATH)/src
@@ -7,16 +5,12 @@ GO_SRC = $(GOPATH)/src
 GO = go
 GOLINT = $(GO_BIN)/revive
 
-PROJECT_BASE = $(GO_SRC)/$(BINARY)
-
-VENDOR_FOLDER = $(PROJECT_BASE)/vendor
-
 .PHONY: lint
 lint: check-gosetup ## Run linter on a project
 ifeq (, $(shell which ${GOLINT}))
 	go get -u github.com/mgechev/revive
 endif
-	@for source in $(shell find ${PROJECT_BASE} -type f -name '*.go' -not -path '*/vendor/*'); do \
+	@for source in $(shell find . -type f -name '*.go' -not -path '*/vendor/*'); do \
 		${GOLINT} -config config.toml -formatter stylish $$source; \
 	done
 

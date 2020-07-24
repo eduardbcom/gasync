@@ -8,7 +8,7 @@ package tryEach
 // If all tasks fail
 // the return value will be and error and result (if any) of the final attempt.
 func Do(funcs ...func() (interface{}, error)) (interface{}, error) {
-	var lastError error = nil
+	var lastError error
 
 	for _, f := range funcs {
 		res, err := f()

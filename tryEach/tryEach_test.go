@@ -66,7 +66,7 @@ func TestDoIdentityErrorRequests2(t *testing.T) {
 
 func TestDoIdentityErrorRequests3(t *testing.T) {
 	// expected return value is interface{}
-	var expectedResult interface{} = nil
+	var expectedResult interface{}
 	expectedError := errors.New("some second error here")
 
 	ctx := context.TODO()
@@ -84,10 +84,10 @@ func TestDoIdentityErrorRequests3(t *testing.T) {
 	}
 }
 
-func identifyOK(ctx context.Context, str string) (string, error) {
+func identifyOK(_ context.Context, str string) (string, error) {
 	return str, nil
 }
 
-func identifyError(ctx context.Context, err error) (string, error) {
+func identifyError(_ context.Context, err error) (string, error) {
 	return "", err
 }
