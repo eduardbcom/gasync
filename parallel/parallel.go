@@ -44,18 +44,16 @@ func DoWithLimit(limit int, funcs ...func() (interface{}, error)) ([]interface{}
 
 		go func(i int, f func() (interface{}, error)) {
 			defer wg.Done()
+			defer func() { <-ch }()
 
 			res, err := f()
 			if err != nil {
 				errorCh <- err
 
-				// dont do <- in case of errors
-				// no reason to take more tasks, already error case
 				return
 			}
 
 			results[i] = res
-			<-ch
 		}(i, f)
 	}
 

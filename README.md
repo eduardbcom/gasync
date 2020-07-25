@@ -262,3 +262,5 @@ res, err := retry.DoWithInterval(
 
 ## TODO:
 - fix TODOs
+- use DDT for some tests
+- add tests that covers panic in funcs
