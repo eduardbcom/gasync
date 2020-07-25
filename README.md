@@ -10,6 +10,7 @@ Inspired by `yarn add async`. :speak_no_evil: :fire: :ok_hand:
 - [parallel](#parallel)
 - [series](#series)
 - [tryEach](#tryEach)
+- [times](#times)
 
 ## parallel:
 ```go
@@ -21,8 +22,8 @@ ctx := context.TODO()
 
 res, err := parallel.Do(
     // both functions run in parallel
-    func() (interface{}, error) { return request(ctx, "task1") },
-    func() (interface{}, error) { return request(ctx, "task2") },
+    func() (interface{}, error) { return identity(ctx, "task1") },
+    func() (interface{}, error) { return identity(ctx, "task2") },
 )
 
 // res == []interface{}{"task1", "task2"}
@@ -38,7 +39,7 @@ ctx := context.TODO()
 
 res, err := parallel.Do(
     // both functions run in parallel
-    func() (interface{}, error) { return request(ctx, "task1") },
+    func() (interface{}, error) { return identity(ctx, "task1") },
     func() (interface{}, error) { return nil, errors.New("some error here") },
 )
 
@@ -56,8 +57,8 @@ ctx := context.TODO()
 res, err := parallel.DoWithLimit(
     2,
     // both functions run in parallel
-    func() (interface{}, error) { return request(ctx, "task1") },
-    func() (interface{}, error) { return request(ctx, "task2") },
+    func() (interface{}, error) { return identity(ctx, "task1") },
+    func() (interface{}, error) { return identity(ctx, "task2") },
 )
 
 // res == []interface{}{"task1", "task2"}
@@ -74,8 +75,8 @@ ctx := context.TODO()
 
 res, err := series.Do(
     // functions run sequentially
-    func() (interface{}, error) { return request(ctx, "task1") },
-    func() (interface{}, error) { return request(ctx, "task2") },
+    func() (interface{}, error) { return identity(ctx, "task1") },
+    func() (interface{}, error) { return identity(ctx, "task2") },
 )
 
 // res == []interface{}{"task1", "task2"}
@@ -91,7 +92,7 @@ ctx := context.TODO()
 
 res, err := series.Do(
     // functions run sequentially
-    func() (interface{}, error) { return request(ctx, "task1") },
+    func() (interface{}, error) { return identity(ctx, "task1") },
     func() (interface{}, error) { return nil, errors.New("some error here") },
 )
 
@@ -110,8 +111,8 @@ ctx := context.TODO()
 
 res, err := tryEach.Do(
     // functions run sequentially
-    func() (interface{}, error) { return request(ctx, "task1") },
-    func() (interface{}, error) { return request(ctx, "task2") },
+    func() (interface{}, error) { return identity(ctx, "task1") },
+    func() (interface{}, error) { return identity(ctx, "task2") },
 )
 
 // res == "task1"
@@ -128,7 +129,7 @@ ctx := context.TODO()
 res, err := tryEach.Do(
     // functions run sequentially
     func() (interface{}, error) { return nil, errors.New("some error here") },
-    func() (interface{}, error) { return request(ctx, "task2") },
+    func() (interface{}, error) { return identity(ctx, "task2") },
 )
 
 // res == "task2"
@@ -152,13 +153,65 @@ res, err := tryEach.Do(
 // err == errors.New("some second error here")
 ```
 
+## times:
+```go
+import (
+    "github.com/eduardbcom/gasync/times"
+)
+
+ctx := context.TODO()
+
+res, err := times.Do(
+    2,
+    // both calls run in parallel
+    func() (interface{}, error) { return identity(ctx, "task") },
+)
+
+// res == []interface{}{"task", "task"}
+// err == nil
+```
+
+```go
+import (
+    "github.com/eduardbcom/gasync/times"
+)
+
+ctx := context.TODO()
+
+res, err := times.DoWithLimit(
+    2,
+    5,
+    // 2 calls run in parallel
+    // 2 calls run in parallel
+    // 1 call
+    func() (interface{}, error) { return identity(ctx, "task") },
+)
+
+// res == []interface{}{"task", "task", "task", "task", "task"}
+// err == nil
+```
+
+```go
+import (
+    "github.com/eduardbcom/gasync/times"
+)
+
+ctx := context.TODO()
+
+res, err := times.DoSeries(
+    2,
+    // functions run in sequential way
+    func() (interface{}, error) { return identity(ctx, "task") }
+)
+
+// res == []interface{}{"task", "task"}
+// err == nil
+```
+
 ## Motivation:
 At some point of my journey with Go I realized that I want to hide all concurrency mess under pleasurable interface.
 As long as I worked with JS for a while, the first idea was "I need something like the 'async' module. But in Go.".
 
 ## TODO:
-- times
-- timesLimit
-- timesSeries
 - retry
 - fix TODOs
