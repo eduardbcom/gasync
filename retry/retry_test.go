@@ -116,8 +116,8 @@ func TestDoIncorrectParamNEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("retry.Do failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -140,8 +140,8 @@ func TestDoWithIntervalIncorrectParamNEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("retry.DoWithInterval failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -165,8 +165,8 @@ func TestDoIncorrectParamNEqualsToNeg(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("retry.DoWithInterval failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -190,8 +190,8 @@ func TestDoWithIntervalIncorrectParamIntervalMsEqualsToNeg(t *testing.T) {
 	expectedError := "Incorrect intervalMs value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("retry.DoWithInterval failed. Expected %v, actual: %v", expectedError, err)
 		}

@@ -90,8 +90,8 @@ func TestDoIncorrectParamNEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.Do failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -114,8 +114,8 @@ func TestDoWithLimitIncorrectParamLimitEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect limit value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.DoWithLimit failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -139,8 +139,8 @@ func TestDoWithLimitIncorrectParamLimitEqualsToNeg(t *testing.T) {
 	expectedError := "Incorrect limit value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.DoWithLimit failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -164,8 +164,8 @@ func TestDoWithLimitIncorrectParamNEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.DoWithLimit failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -189,8 +189,8 @@ func TestDoWithLimitIncorrectParamNEqualsToNeg(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.DoWithLimit failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -213,8 +213,8 @@ func TestDoSeriesLimitIncorrectParamNEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.DoSeries failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -236,8 +236,8 @@ func TestDoIncorrectParamNEqualsToNeg(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.Do failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -259,8 +259,8 @@ func TestDoSeriesIncorrectParamNEqualsToNeg(t *testing.T) {
 	expectedError := "Incorrect n value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("times.Do failed. Expected %v, actual: %v", expectedError, err)
 		}

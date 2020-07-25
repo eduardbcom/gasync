@@ -56,7 +56,7 @@ func DoWithInterval(times int, intervalMs int, f func() (interface{}, error)) (i
 		lastError = err
 
 		// dont sleep on the last call
-		if i < times -1 {
+		if i < times-1 {
 			time.Sleep(time.Duration(intervalMs) * time.Millisecond)
 		}
 	}

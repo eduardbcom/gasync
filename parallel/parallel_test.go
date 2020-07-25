@@ -94,8 +94,8 @@ func TestDoWithLimitIdentityIncorrectLimitEqualsTo0(t *testing.T) {
 	expectedError := "Incorrect limit value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("retry.Do failed. Expected %v, actual: %v", expectedError, err)
 		}
@@ -117,8 +117,8 @@ func TestDoWithLimitIdentityIncorrectLimitIsNeg(t *testing.T) {
 	expectedError := "Incorrect limit value"
 
 	defer func() {
-		err := recover();
-		
+		err := recover()
+
 		if err == nil {
 			t.Errorf("retry.Do failed. Expected %v, actual: %v", expectedError, err)
 		}
