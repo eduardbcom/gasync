@@ -11,6 +11,7 @@ Inspired by `yarn add async`. :speak_no_evil: :fire: :ok_hand:
 - [series](#series)
 - [tryEach](#tryEach)
 - [times](#times)
+- [retry](#retry)
 
 ## parallel:
 ```go
@@ -206,6 +207,57 @@ res, err := times.DoSeries(
 
 // res == []interface{}{"task", "task"}
 // err == nil
+```
+
+## retry:
+```go
+import (
+    "github.com/eduardbcom/gasync/retry"
+)
+
+ctx := context.TODO()
+
+res, err := retry.Do(
+    2,
+    func() (interface{}, error) { return identity(ctx, "task") },
+)
+
+// res == "task1"
+// err == nil
+```
+
+```go
+import (
+    "github.com/eduardbcom/gasync/retry"
+)
+
+ctx := context.TODO()
+
+res, err := retry.Do(
+    2,
+    func() (interface{}, error) { return nil, errors.New("some error here") },
+)
+
+// res == nil
+// err == errors.New("some error here")
+```
+
+```go
+import (
+    "github.com/eduardbcom/gasync/retry"
+)
+
+ctx := context.TODO()
+
+intervalMs := 1000
+res, err := retry.DoWithInterval(
+    2,
+    intervalMs,
+    func() (interface{}, error) { return nil, errors.New("some error here") }
+)
+
+// res == nil
+// err == errors.New("some error here")
 ```
 
 ## Motivation:
