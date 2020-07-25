@@ -10,7 +10,7 @@ import (
 // If function returns an error, the final result is a (nil, Error).
 // The amount of function calls in that case is undefined.
 //
-// Otherwise, it's an array of results with length N
+// Otherwise, it's an array of results with length N.
 func Do(n int, f func() (interface{}, error)) ([]interface{}, error) {
 	if n <= 0 {
 		panic("Incorrect n value")

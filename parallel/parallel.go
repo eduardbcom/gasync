@@ -9,7 +9,7 @@ import (
 // If one of them returns an error, the final result is a (nil, Error).
 // The amount of function calls in that case is undefined.
 //
-// Otherwise, it's an array of results
+// Otherwise, it's an array of results.
 func Do(funcs ...func() (interface{}, error)) ([]interface{}, error) {
 	return DoWithLimit(len(funcs), funcs...)
 }

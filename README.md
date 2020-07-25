@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/eduardbcom/gasync.svg?branch=master)](https://travis-ci.org/eduardbcom/gasync)
 [![Coverage Status](https://coveralls.io/repos/github/eduardbcom/gasync/badge.svg?branch=master)](https://coveralls.io/github/eduardbcom/gasync?branch=master)
 
-Set of utilities to handle concurrency tasks in Go.
+Set of utilities to handle different control flows in Go.
 
 Inspired by `yarn add async`. :speak_no_evil: :fire: :ok_hand:
 
@@ -260,10 +260,5 @@ res, err := retry.DoWithInterval(
 // err == errors.New("some error here")
 ```
 
-## Motivation:
-At some point of my journey with Go I realized that I want to hide all concurrency mess under pleasurable interface.
-As long as I worked with JS for a while, the first idea was "I need something like the 'async' module. But in Go.".
-
 ## TODO:
-- retry
 - fix TODOs
