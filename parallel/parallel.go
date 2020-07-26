@@ -21,6 +21,10 @@ func Do(funcs ...func() (interface{}, error)) ([]interface{}, error) {
 //
 // Otherwise, it's an array of results.
 func DoWithLimit(limit int, funcs ...func() (interface{}, error)) ([]interface{}, error) {
+	if len(funcs) == 0 {
+		return make([]interface{}, 0), nil
+	}
+
 	if limit <= 0 {
 		panic("Incorrect limit value")
 	}
