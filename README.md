@@ -1,6 +1,6 @@
 # gasync :fire: :ok_hand:
-[![Build Status](https://travis-ci.org/eduardbme/gasync.svg?branch=master)](https://travis-ci.org/eduardbme/gasync)
-[![Coverage Status](https://coveralls.io/repos/github/eduardbme/gasync/badge.svg?branch=master)](https://coveralls.io/github/eduardbme/gasync?branch=master)
+[![Build Status](https://travis-ci.org/eduardbme/gasync.svg?branch=v0.0.2)](https://travis-ci.org/eduardbme/gasync)
+[![Coverage Status](https://coveralls.io/repos/github/eduardbme/gasync/badge.svg?branch=v0.0.2)](https://coveralls.io/github/eduardbme/gasync?branch=v0.0.2)
 
 Set of utilities to handle different control flows in Go.
 
