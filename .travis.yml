@@ -8,5 +8,8 @@ before_install:
  - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 
 script:
+ - make lint
  - make unit-test
- - goveralls -coverprofile=coverage.out -service=travis-ci 
+
+after_success:
+ - goveralls -coverprofile=coverage.out -service=travis-ci
